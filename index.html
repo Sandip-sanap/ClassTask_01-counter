@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>countdownTimer</title>
+</head>
+<body>
+  <div class="col-md-12 text-center">
+    <h1> <span id="CountdownText">10 </span> </h1>
+  </div>
+  <script>
+    function ProgressCountdown(timeleft, text) {
+      return new Promise((resolve, reject) => {
+        var countdownTimer = setInterval(() => {
+          timeleft--;
+
+
+          document.getElementById(text).textContent = timeleft;
+
+          if (timeleft <= 0) {
+            clearInterval(countdownTimer);
+            resolve(true);
+          }
+
+        }, 1000);
+
+      });
+    }
+    ProgressCountdown(10, 'CountdownText').then(value => document.write(`Happy New Year`));
+  </script>
+</body>
+
+</html>
